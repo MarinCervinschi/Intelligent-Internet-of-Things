@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_restful import Resource, Api, reqparse
 from resources.devices_resource import DevicesResource
+from resources.device_resource import DeviceResource
 from model.device_model import DeviceModel
 from persistence.data_manager import DataManager
 
@@ -13,9 +14,7 @@ print("Starting HTTP RESTful API Server ...")
 
 dataManager = DataManager()
 
-demoDevice = DeviceModel(
-    " device00001 ", " iot : demosensor ", "v0 .0.0.1 ", "Acme - Inc "
-)
+demoDevice = DeviceModel("device00001", "iot : demosensor", "v0 .0.0.1", "Acme - Inc")
 
 dataManager.add_device(demoDevice)
 
@@ -25,6 +24,14 @@ api.add_resource(
     resource_class_kwargs={"data_manager": dataManager},
     endpoint="devices",
     methods=["GET", "POST"],
+)
+
+api.add_resource(
+    DeviceResource,
+    ENDPOINT_PREFIX + "/device/<string:device_id>",
+    resource_class_kwargs={"data_manager": dataManager},
+    endpoint="device",
+    methods=["GET", "PUT", "DELETE"],
 )
 
 if __name__ == "__main__":

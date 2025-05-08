@@ -52,3 +52,11 @@ This script automates the setup process by performing the following steps:
 2. Installs all required dependencies listed in `requirements.txt`.
 3. Generates a `.flaskenv` file from the `.flaskenv.example` template. You can customize the `.flaskenv.example` file to define your own environment variables.
 4. Launches the application.
+
+## To run the application
+
+To only run the application, you can use the following command:
+```bash
+flask run
+```
+This command will start the Flask development server, and you can access the API at http://127.0.0.1:7070/api/iot/inventory.

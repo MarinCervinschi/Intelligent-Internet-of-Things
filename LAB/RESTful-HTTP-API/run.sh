@@ -7,6 +7,6 @@ source .venv/bin/activate
 
 pip install -r requirements.txt
 
-cp .env.example .env
+cp .flaskenv.example .flaskenv
 
 flask run

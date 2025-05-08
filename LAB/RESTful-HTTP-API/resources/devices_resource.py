@@ -9,5 +9,5 @@ class DevicesResource(Resource):
         self.dataManager = kwargs['data_manager']
 
     def get(self):
-        device_list = [device.__dict__ for device in self.dataManager.devices_dictionary.values()]
+        device_list = [device.__dict__ for device in self.dataManager.device_dictionary.values()]
         return device_list, 200

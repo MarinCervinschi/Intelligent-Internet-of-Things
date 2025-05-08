@@ -40,9 +40,6 @@ class DeviceResource(Resource):
                 return {"error": "Device UUID does't exists"}, 404
 
             self.dataManager.remove_device(device_id)
-            return Response(
-                status=204,
-                headers={"Location": request.url + "/" + device_id},
-            )
+            return Response(status=204)
         except Exception as e:
             return {"error": "Generic Internal Server Error ! Reason : " + str(e)}, 500

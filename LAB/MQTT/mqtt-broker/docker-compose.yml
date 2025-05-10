@@ -1,0 +1,21 @@
+services:
+  mqtt-broker:
+    image: eclipse-mosquitto:2.0
+    container_name: mqtt-broker
+    ports:
+      - "7883:1883"
+    volumes:
+      - ./mosquitto/config/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - ./mosquitto/log:/mosquitto/log
+    environment:
+      - TZ=UTC
+      - MQTT_USERNAME=marin
+      - MQTT_PASSWORD=UniMoRe
+    command: >
+      sh -c "
+      echo \"$$MQTT_USERNAME:$$MQTT_PASSWORD\" > /mosquitto/config/password.txt &&
+      mosquitto_passwd -U /mosquitto/config/password.txt &&
+      chmod 0600 /mosquitto/config/password.txt &&
+      /docker-entrypoint.sh /usr/sbin/mosquitto -c /mosquitto/config/mosquitto.conf
+      "
+    restart: unless-stopped

@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=42"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "iot_coap_project"
+version = "0.1"
+dependencies = [
+    "aiocoap==0.4.14",
+    "LinkHeader",
+    "kpn-senml"
+]
+
+[tool.setuptools]
+packages = { find = {} }

@@ -41,6 +41,7 @@ _Figure: Smart object modelling diagram showing the structure of the vehicle sma
 
 - **Python**: Used for both producer (vehicle emulator) and consumer applications.
 - **paho-mqtt**: MQTT client library for Python.
+- **gpxpy**: Library for parsing and generating GPX files, used to simulate vehicle GPS tracks.
 - **Docker**: For running the MQTT broker (Eclipse Mosquitto).
 
 ---
